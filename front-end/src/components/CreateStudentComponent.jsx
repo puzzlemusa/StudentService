@@ -1,4 +1,5 @@
 import React, { Component, useDebugValue } from 'react';
+import StudentService from '../services/StudentService';
 
 class CreateStudentComponent extends Component {
 
@@ -24,6 +25,10 @@ class CreateStudentComponent extends Component {
 
         let student = {firstName: this.state.firstName, lastName: this.state.lastName, matriculationNumber: this.state.matriculationNumber, address: this.state.address};
         console.log('student => ' + JSON.stringify(student));
+
+        StudentService.createStudent(student).then(res => {
+            this.props.history.push('./students');
+        });
     }
     changeFirstNameHandler= (event) => {
         this.setState({firstName: event.target.value});
@@ -44,7 +49,7 @@ class CreateStudentComponent extends Component {
     cancel(){
         this.props.history.push('./students');
     }
-    
+     
     render() {
         return (
             <div>
