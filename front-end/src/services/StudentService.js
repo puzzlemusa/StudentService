@@ -14,6 +14,10 @@ class StudentService{
     getStudentByID(matriculationNumber){
         return axios.get(STUDENT_API_URL + '/' + matriculationNumber);
     }
+
+    updateStudent(student, matriculationNumber){
+        return axios.put(STUDENT_API_URL + '/' + matriculationNumber,student);
+    }
 }
 
 export default new StudentService()

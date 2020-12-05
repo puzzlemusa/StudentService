@@ -36,8 +36,8 @@ class UpdateStudentComponent extends Component {
         let student = {firstName: this.state.firstName, lastName: this.state.lastName, matriculationNumber: this.state.matriculationNumber, address: this.state.address};
         console.log('student => ' + JSON.stringify(student));
 
-        StudentService.createStudent(student).then(res => {
-            this.props.history.push('./students');
+        StudentService.updateStudent(student, this.state.matriculationNumber).then(res =>{
+            this.props.history.push('../students');
         });
     }
     changeFirstNameHandler= (event) => {
