@@ -12,14 +12,18 @@ public class StudentService {
     private final Collection<Student> students;
 
     public StudentService() {
-        students = new ArrayList<>() {{
+    	students = new ArrayList<>();
+    	students.add(new Student("Sam", "Wart", 111111L));
+    	students.add(new Student("Bill", "Beggins", 222222L));
+    	students.add(new Student("Stuward", "Gil", 333333L));
+        /*students = new ArrayList<Student>() {{
             add(new Student("Sam", "Wart", 111111L) {
             });
             add(new Student("Bill", "Beggins", 222222L) {
             });
             add(new Student("Stuward", "Gil", 333333L) {
-            });
-        }};
+            }); 
+        }};*/
     }
 
     public Collection<Student> getStudents() {

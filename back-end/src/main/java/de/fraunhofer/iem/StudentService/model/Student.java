@@ -16,4 +16,16 @@ public class Student {
         this.lastName = lastName;
         this.matriculationNumber = matriculationNumber;
     }
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Long getMatriculationNumber() {
+		return matriculationNumber;
+	}
 }
