@@ -1,10 +1,13 @@
 package de.fraunhofer.iem.StudentService.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,7 +59,7 @@ public class StudentController {
 		return ResponseEntity.ok(student);
     }
     
-    //update Student REST API
+    //update Student
     @PutMapping("/students/{matriculationNumber}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long matriculationNumber, @RequestBody Student studentDetails){
     	Student student = studentRecords.findById(matriculationNumber)
@@ -70,5 +73,19 @@ public class StudentController {
     	Student updatedStudent = studentRecords.save(student);
     	
     	return ResponseEntity.ok(updatedStudent);
+    }
+    
+    //delete student
+    @DeleteMapping("/students/{matriculationNumber}")
+    public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable Long matriculationNumber){
+    	Student student = studentRecords.findById(matriculationNumber)
+    			.orElseThrow(() -> new ResourceNotFoundException("No student with the matriculation number: "+ matriculationNumber));
+         
+    	studentRecords.delete(student);
+    	
+    	Map<String, Boolean> response = new HashMap<>();
+    	response.put("Deleted", Boolean.TRUE);
+    	
+    	return ResponseEntity.ok(response);
     }
 }
