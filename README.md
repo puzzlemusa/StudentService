@@ -9,14 +9,14 @@ Preresequite:
 - NodeJs 
 
 ### How to run backend
-Go to **Backend** directory and use command: <br/>
+Go to **back-end** directory and use command: <br/>
 `./mvnw install` <br/>
 Start backend using command: <br/>
 `./mvnw spring-boot:run` <br/>
 It will start the backend at port 8080 on your localhost. If it is running successfully, it will give a list of student as a response when hit a GET request on http://localhost:8080/students <br/>
 
 ### How to run frontend
-Go to **Frontend** directory and use command: <br/>
+Go to **front-end** directory and use command: <br/>
 `npm install` <br/>
 Start frontend using command: <br/>
 `npm start` <br/>
