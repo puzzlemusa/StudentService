@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,5 +54,21 @@ public class StudentController {
     	Student student = studentRecords.findById(matriculationNumber)
     			.orElseThrow(() -> new ResourceNotFoundException("No student with the matriculation number: "+ matriculationNumber));
 		return ResponseEntity.ok(student);
+    }
+    
+    //update Student REST API
+    @PutMapping("/students/{matrNo}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long matrNo, @RequestBody Student studentDetails){
+    	Student student = studentRecords.findById(matrNo)
+    			.orElseThrow(() -> new ResourceNotFoundException("No student with the matriculation number: "+ matrNo));
+         
+    	student.setFirstName(studentDetails.getFirstName());
+    	student.setLastName(studentDetails.getLastName());
+    	student.setMatriculationNumber(studentDetails.getMatriculationNumber());
+    	student.setAddress(studentDetails.getAddress());
+   
+    	Student updatedStudent = studentRecords.save(student);
+    	
+    	return ResponseEntity.ok(updatedStudent);
     }
 }
