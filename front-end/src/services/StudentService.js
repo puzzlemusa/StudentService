@@ -18,6 +18,10 @@ class StudentService{
     updateStudent(student, matriculationNumber){
         return axios.put(STUDENT_API_URL + '/' + matriculationNumber,student);
     }
+
+    deleteStudent(matriculationNumber){
+        return axios.delete(STUDENT_API_URL +'/'+ matriculationNumber);
+    }
 }
 
 export default new StudentService()

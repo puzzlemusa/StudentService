@@ -13,6 +13,14 @@ class ListStudentComponent extends Component {
 
         this.addStudent = this.addStudent.bind(this);
         this.editStudent = this.editStudent.bind(this);
+        this.deleteStudent = this.deleteStudent.bind(this);
+    }
+
+
+    deleteStudent(matriculationNumber){
+        StudentService.deleteStudent(matriculationNumber).then(res => {
+                this.setState({students: this.state.students.filter(student => student.matriculationNumber !== matriculationNumber)});
+            });
     }
 
     addStudent(){
@@ -48,6 +56,9 @@ class ListStudentComponent extends Component {
             <td className = "text-center">
                 <button className = "btn btn-primary" onClick= { () => this.editStudent(Student.matriculationNumber)}>
                     Update 
+                </button>
+                <button className = "btn btn-danger" style={{marginLeft: "10px"}} onClick= { () => this.deleteStudent(Student.matriculationNumber)}>
+                    Delete 
                 </button>
             </td>
             </tr>
