@@ -10,6 +10,12 @@ class ListStudentComponent extends Component {
         this.state = {
             students: []
         }
+
+        this.addStudent = this.addStudent.bind(this);
+    }
+
+    addStudent(){
+        this.props.history.push('./add-student');
     }
 
     componentDidMount(){
@@ -42,6 +48,11 @@ class ListStudentComponent extends Component {
             
             <div>
                 <h2 className = "text-center">Student Service</h2>
+
+                <div className = "row">
+                    <button className = "btn btn-primary" onClick={this.addStudent}> Add New Student </button>
+                </div>
+
                 <div className = "row">
                     <table className = "table table-striped table-bordered">
                         <thead>

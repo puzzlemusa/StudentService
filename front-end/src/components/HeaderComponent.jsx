@@ -5,9 +5,9 @@ class HeaderComponent extends Component {
         return (
             <div>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark ">
+                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                         <div>
-                            Student Service App - Coding Test - Fraunhofer IEM Paderborn
+                            <a href = "#">Student Service App - Coding Test - Fraunhofer IEM Paderborn</a>
                         </div>
                     </nav>
                 </header>
