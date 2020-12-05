@@ -5,6 +5,7 @@ import de.fraunhofer.iem.StudentService.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -22,5 +23,11 @@ public class StudentController {
     public ResponseEntity<Collection<Student>> getStudents() {
         Collection<Student> students = this.studentService.getStudents();
         return new ResponseEntity<>(students, HttpStatus.OK);
+    }
+    
+    //Add Student REST API
+    @PostMapping("students")
+    public Student addStudent(Student student) {
+    	return student;
     }
 }

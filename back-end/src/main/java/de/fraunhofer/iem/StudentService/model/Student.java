@@ -1,21 +1,31 @@
 package de.fraunhofer.iem.StudentService.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "students") 
 public class Student {
 
+	@Column(name = "first_name")
     private String firstName;
+	
+	@Column(name = "first_name")
     private String lastName;
-    private Long matriculationNumber;
+
+	@Column(name = "first_name")
+	private Long matriculationNumber;
+	
+	@Column(name = "first_name")
     private String Address;
     
     public Student() {
-    	System.out.println("First name and Matriculation Number are important to initialize a Student!");
-    	System.out.println("Accepted Formats:");
-    	System.out.println("1. (first name, matriculation number)\n2.(first name, last name, matriculation number) and\n3.(first name, last name, matriculation number, address)");
     }
     
     public Student(String firstName, Long matriculationNumber) {
@@ -39,9 +49,21 @@ public class Student {
 	public String getFirstName() {
 		return firstName;
 	}
-
+  
 	public String getLastName() {
 		return lastName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setMatriculationNumber(Long matriculationNumber) {
+		this.matriculationNumber = matriculationNumber;
 	}
 
 	public Long getMatriculationNumber() {
