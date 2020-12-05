@@ -4,19 +4,25 @@ import './App.css';
 import ListStudentComponent from './components/ListStudentComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
 function App(){
   return(
     <div>
-      <HeaderComponent />
-      
-        <div className = "container">
-        <ListStudentComponent />
-        </div>
-
-      <FooterComponent />
+      <Router>
+        <HeaderComponent />
+          <div className = "container">
+            <Switch>  
+              <Route path ="/" component = {ListStudentComponent}></Route>
+              <Route path ="/students" component = {ListStudentComponent}></Route>
+              <ListStudentComponent />
+            </Switch>
+          </div>
+        <FooterComponent />
+      </Router>
     </div>
+    
   )
 }
 
