@@ -2,6 +2,7 @@ package de.fraunhofer.iem.StudentService.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -16,29 +17,30 @@ public class Student {
 	@Column(name = "first_name")
     private String firstName;
 	
-	@Column(name = "first_name")
+	@Column(name = "last_name")
     private String lastName;
 
-	@Column(name = "first_name")
+	@Id
+	@Column(name = "matr_no")
 	private Long matriculationNumber;
 	
-	@Column(name = "first_name")
+	@Column(name = "address")
     private String Address;
     
     public Student() {
     }
-    
-    public Student(String firstName, Long matriculationNumber) {
-        this.firstName = firstName;
-        this.matriculationNumber = matriculationNumber;
-    }
-    
-    public Student(String firstName, String lastName, Long matriculationNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.matriculationNumber = matriculationNumber;
-    }
-    
+//    
+//    public Student(String firstName, Long matriculationNumber) {
+//        this.firstName = firstName;
+//        this.matriculationNumber = matriculationNumber;
+//    }
+//    
+//    public Student(String firstName, String lastName, Long matriculationNumber) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.matriculationNumber = matriculationNumber;
+//    }
+//    
     public Student(String firstName, String lastName, Long matriculationNumber, String address) {
         this.firstName = firstName;
         this.lastName = lastName;

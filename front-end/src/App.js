@@ -1,4 +1,19 @@
-import React, { Component } from "react";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import ListStudentComponent from './components/ListStudentComponent';
+
+function App(){
+  return(
+    <div className = "container">
+      <ListStudentComponent />
+    </div>
+  )
+}
+
+export default App;
+
+/*import React, { Component } from "react";
 import { Container, Table } from "reactstrap";
 
 
@@ -63,3 +78,4 @@ class App extends Component {
 }
 
 export default App;
+*/
