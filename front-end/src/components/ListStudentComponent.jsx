@@ -12,10 +12,15 @@ class ListStudentComponent extends Component {
         }
 
         this.addStudent = this.addStudent.bind(this);
+        this.editStudent = this.editStudent.bind(this);
     }
 
     addStudent(){
         this.props.history.push('./add-student');
+    }
+
+    editStudent(matriculationNumber){
+        this.props.history.push(`./update-student/${matriculationNumber}`);
     }
 
     componentDidMount(){
@@ -35,11 +40,16 @@ class ListStudentComponent extends Component {
         }
         const StudentList = Students.map(Student => {
         return (
-            <tr scope="row">
+            <tr scope="row" key = {Student.matriculationNumber}> 
             <td className = "text-center">{Student.firstName}</td>
             <td className = "text-center">{Student.lastName}</td>
             <td className = "text-center">{Student.matriculationNumber}</td>
             <td className = "text-center">{Student.address}</td>
+            <td className = "text-center">
+                <button className = "btn btn-primary" onClick= { () => this.editStudent(Student.matriculationNumber)}>
+                    Update 
+                </button>
+            </td>
             </tr>
         );
         });
@@ -61,6 +71,7 @@ class ListStudentComponent extends Component {
                             <th className = "text-center">Last Name</th>
                             <th className = "text-center">Mtr. Number</th>
                             <th className = "text-center">Address</th>
+                            <th className = "text-center">Actions</th>
                           </tr>
                         </thead>
 

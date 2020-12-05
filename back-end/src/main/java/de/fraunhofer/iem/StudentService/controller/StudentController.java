@@ -57,10 +57,10 @@ public class StudentController {
     }
     
     //update Student REST API
-    @PutMapping("/students/{matrNo}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long matrNo, @RequestBody Student studentDetails){
-    	Student student = studentRecords.findById(matrNo)
-    			.orElseThrow(() -> new ResourceNotFoundException("No student with the matriculation number: "+ matrNo));
+    @PutMapping("/students/{matriculationNumber}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long matriculationNumber, @RequestBody Student studentDetails){
+    	Student student = studentRecords.findById(matriculationNumber)
+    			.orElseThrow(() -> new ResourceNotFoundException("No student with the matriculation number: "+ matriculationNumber));
          
     	student.setFirstName(studentDetails.getFirstName());
     	student.setLastName(studentDetails.getLastName());
