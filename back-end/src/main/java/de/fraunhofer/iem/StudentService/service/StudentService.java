@@ -16,14 +16,7 @@ public class StudentService {
     	students.add(new Student("Sam", "Wart", 111111L));
     	students.add(new Student("Bill", "Beggins", 222222L));
     	students.add(new Student("Stuward", "Gil", 333333L));
-        /*students = new ArrayList<Student>() {{
-            add(new Student("Sam", "Wart", 111111L) {
-            });
-            add(new Student("Bill", "Beggins", 222222L) {
-            });
-            add(new Student("Stuward", "Gil", 333333L) {
-            }); 
-        }};*/
+    	students.add(new Student("Prakhar", 444444L));
     }
 
     public Collection<Student> getStudents() {
