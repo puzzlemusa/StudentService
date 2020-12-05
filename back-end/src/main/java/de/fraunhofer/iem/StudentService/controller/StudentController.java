@@ -39,12 +39,7 @@ public class StudentController {
     public List<Student> getAllStudent(){
     	return studentRecords.findAll();
     }
-    
- /*   public ResponseEntity<Collection<Student>> getStudents() {
-        Collection<Student> students = this.studentService.getStudents();
-        return new ResponseEntity<>(students, HttpStatus.OK);
-    }
-   */ 
+   
     //Add Student REST API
     @PostMapping("students")
     public Student createStudent(@RequestBody Student student) {

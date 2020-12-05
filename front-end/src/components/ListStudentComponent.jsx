@@ -69,9 +69,9 @@ class ListStudentComponent extends Component {
             
             <div>
                 <h2 className = "text-center">Student Service</h2>
-
+                
                 <div className = "row">
-                    <button className = "btn btn-primary" onClick={this.addStudent}> Add New Student </button>
+                    <button style={{marginBottom: "10px"}}  className = "btn btn-primary" onClick={this.addStudent}> Add New Student </button>
                 </div>
 
                 <div className = "row">
