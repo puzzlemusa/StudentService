@@ -25,7 +25,7 @@ public class Student {
 	private Long matriculationNumber;
 	
 	@Column(name = "address")
-    private String Address;
+    private String address;
     
     public Student() {
     }
@@ -45,7 +45,7 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.matriculationNumber = matriculationNumber;
-        this.setAddress(address);
+        this.address = address;
     }
 
 	public String getFirstName() {
@@ -73,10 +73,10 @@ public class Student {
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 }
