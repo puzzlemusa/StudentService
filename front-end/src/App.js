@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Table } from "reactstrap";
+import ReactDOM from 'react-dom';
 
 
 class App extends Component {
