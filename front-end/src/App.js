@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Table } from "reactstrap";
+import ReactDOM from 'react-dom';
 
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
           <td>{Student.firstName}</td>
           <td>{Student.lastName}</td>
           <td>{Student.matriculationNumber}</td>
+	  <td>{Student.address}</td>   
         </tr>
       );
     });
@@ -50,6 +52,7 @@ class App extends Component {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Mtr. Number</th>
+	  <th>Address</th>  
         </tr>
       </thead>
       <tbody>{StudentList}</tbody>
@@ -60,4 +63,83 @@ class App extends Component {
   }
 }
 
+class UpdateDialog extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+		const updatedStudent = {};
+		this.props.attributes.forEach(attribute => {
+			updatedStudent[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
+		});
+		this.props.onUpdate(this.props.student, updatedStudent);
+		window.location = "#";
+	}
+
+	render() {
+		const inputs = this.props.attributes.map(attribute =>
+			<p key={this.props.student.entity[attribute]}>
+				<input type="text" placeholder={attribute}
+					   defaultValue={this.props.student.entity[attribute]}
+					   ref={attribute} className="field"/>
+			</p>
+		);
+
+		const dialogId = "updateStudent-" + this.props.student.entity._links.self.href;
+
+		return (
+			<div key={this.props.student.entity._links.self.href}>
+				<a href={"#" + dialogId}>Update</a>
+				<div id={dialogId} className="modalDialog">
+					<div>
+						<a href="#" title="Close" className="close">X</a>
+
+						<h2>Update a student</h2>
+
+						<form>
+							{inputs}
+							<button onClick={this.handleSubmit}>Update</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
+};
+
+class Student extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.handleDelete = this.handleDelete.bind(this);
+	}
+
+	handleDelete() {
+		this.props.onDelete(this.props.student);
+	}
+
+	render() {
+		return (
+			<tr>
+				<td>{this.props.student.entity.firstName}</td>
+				<td>{this.props.student.entity.lastName}</td>
+				<td>{this.props.student.entity.matriculationNumber}</td>
+			        <td>{this.props.student.entity.address}</td>
+				<td>
+					<UpdateDialog student={this.props.student}
+								  attributes={this.props.attributes}
+								  onUpdate={this.props.onUpdate}/>
+				</td>
+				<td>
+					<button onClick={this.handleDelete}>Delete</button>
+				</td>
+			</tr>
+		)
+	}
+}
 export default App;
