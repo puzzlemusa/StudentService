@@ -73,9 +73,9 @@ class UpdateDialog extends React.Component {
 		e.preventDefault();
 		const updatedStudent = {};
 		this.props.attributes.forEach(attribute => {
-			updated Student[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
+			updatedStudent[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
 		});
-		this.props.onUpdate(this.props.student, updated Student);
+		this.props.onUpdate(this.props.student, updatedStudent);
 		window.location = "#";
 	}
 
